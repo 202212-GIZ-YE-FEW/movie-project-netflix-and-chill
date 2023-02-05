@@ -1,9 +1,10 @@
-'use strict';
+"use strict";
 
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 const PROFILE_BASE_URL = "http://image.tmdb.org/t/p/w185";
 const BACKDROP_BASE_URL = "http://image.tmdb.org/t/p/w780";
 const CONTAINER = document.querySelector(".container");
+const API_KEY = "542003918769df50083a13c415bbc602";
 
 // Don't touch this function please
 const autorun = async () => {
@@ -13,9 +14,7 @@ const autorun = async () => {
 
 // Don't touch this function please
 const constructUrl = (path) => {
-  return `${TMDB_BASE_URL}/${path}?api_key=${atob(
-    "NTQyMDAzOTE4NzY5ZGY1MDA4M2ExM2M0MTViYmM2MDI="
-  )}`;
+  return `${TMDB_BASE_URL}/${path}?api_key=${API_KEY}`;
 };
 
 // You may need to add to this function, definitely don't delete it.
