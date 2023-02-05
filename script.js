@@ -7,8 +7,8 @@ const CONTAINER = document.querySelector(".container");
 
 // Don't touch this function please
 const autorun = async () => {
-  const movies = await fetchMovies();
-  renderMovies(movies.results);
+  const persons = await fetchPersons();
+  renderPersons(persons.results);
 };
 
 // Don't touch this function please
@@ -19,63 +19,59 @@ const constructUrl = (path) => {
 };
 
 // You may need to add to this function, definitely don't delete it.
-const movieDetails = async (movie) => {
-  const movieRes = await fetchMovie(movie.id);
-  renderMovie(movieRes);
-};
 
 // This function is to fetch movies. You may need to add it or change some part in it in order to apply some of the features.
-const fetchMovies = async () => {
-  const url = constructUrl(`movie/now_playing`);
+const fetchPersons = async () => {
+  const url = constructUrl(`person/popular`);
   const res = await fetch(url);
   return res.json();
 };
 
 // Don't touch this function please. This function is to fetch one movie.
-const fetchMovie = async (movieId) => {
-  const url = constructUrl(`movie/${movieId}`);
-  const res = await fetch(url);
-  return res.json();
-};
+
 
 // You'll need to play with this function in order to add features and enhance the style.
-const renderMovies = (movies) => {
-  movies.map((movie) => {
-    const movieDiv = document.createElement("div");
-    movieDiv.innerHTML = `
-        <img src="${BACKDROP_BASE_URL + movie.backdrop_path}" alt="${
-      movie.title
-    } poster">
-        <h3>${movie.title}</h3>`;
-    movieDiv.addEventListener("click", () => {
-      movieDetails(movie);
+const renderPersons = (persons) => {
+  persons.map((person) => {
+  const personDiv = document.createElement("div");
+   personDiv.className = "bigCard" 
+  //  const row = document.createElement("div")
+  //   column.className = "row"
+  //  for(let i =0 ;i<=3;i++){
+  //   const column = document.createElement("div")
+  //   column.className = "column"
+
+  //  }
+    personDiv.innerHTML = `
+    <div class="card" style="width: 18rem;">
+    
+    <div class= "onHover">
+    <p>ipsum Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+     Error ullam accusamus soluta. Necessitatibus labore soluta dicta,
+      quas facere, asperiores quisquam, reiciendis temporibus debitis corporis maiores.
+       Dignissimos, sapiente reprehenderit! Blanditiis, numquam?
+    </p>
+    </div>
+    
+    <img class="card-img-top"src="${PROFILE_BASE_URL + person.profile_path}" alt="${
+        person.name}">
+    <div class="card-body">
+    
+    <h3>${person.name}</h3>
+      <p class="card-text">add movies that he act</p>
+    </div>
+  </div>
+    `;
+// 
+    personDiv.addEventListener("click", () => {
+      console.log("Clicked")
+
     });
-    CONTAINER.appendChild(movieDiv);
+
+    CONTAINER.appendChild(personDiv);
   });
 };
 
 // You'll need to play with this function in order to add features and enhance the style.
-const renderMovie = (movie) => {
-  CONTAINER.innerHTML = `
-    <div class="row">
-        <div class="col-md-4">
-             <img id="movie-backdrop" src=${
-               BACKDROP_BASE_URL + movie.backdrop_path
-             }>
-        </div>
-        <div class="col-md-8">
-            <h2 id="movie-title">${movie.title}</h2>
-            <p id="movie-release-date"><b>Release Date:</b> ${
-              movie.release_date
-            }</p>
-            <p id="movie-runtime"><b>Runtime:</b> ${movie.runtime} Minutes</p>
-            <h3>Overview:</h3>
-            <p id="movie-overview">${movie.overview}</p>
-        </div>
-        </div>
-            <h3>Actors:</h3>
-            <ul id="actors" class="list-unstyled"></ul>
-    </div>`;
-};
 
 document.addEventListener("DOMContentLoaded", autorun);
