@@ -15,6 +15,16 @@ const currentDate =
 const release = `&primary_release_date.gte=1992-01-01&primary_release_date.lte=${currentDate}`;
 const youtubeBaseUrl = `https://www.youtube.com/embed/`;
 
+const prev = document.getElementById("prev");
+const next = document.getElementById("next");
+const current = document.getElementById("current");
+
+let currentPage = 1;
+let nextPage = 2;
+let prevPage = 3;
+let lastUrl = "";
+let totalPages = 60;
+
 const deletingContainerContent = () => {
   while (CONTAINER.firstChild) {
     CONTAINER.firstChild.remove();
@@ -22,8 +32,26 @@ const deletingContainerContent = () => {
 };
 // Don't touch this function please
 const autorun = async (path, query = "") => {
+  lastUrl = path;
   const movies = await fetchMovies(path, query);
-  console.log(movies);
+  currentPage = movies.page;
+  nextPage = currentPage + 1;
+  prevPage = currentPage - 1;
+  totalPages = movies.total_pages;
+
+  current.innerText = currentPage;
+
+  if (currentPage <= 1) {
+    prev.classList.add("disabled");
+    next.classList.remove("disabled");
+  } else if (currentPage >= totalPages) {
+    prev.classList.remove("disabled");
+    next.classList.add("disabled");
+  } else {
+    prev.classList.remove("disabled");
+    next.classList.remove("disabled");
+  }
+
   genresDetails();
   renderMovies(movies.results);
 };
@@ -542,3 +570,15 @@ document
   .getElementById("upComing")
   .addEventListener("click", () => autorun(`movie/upcoming`));
 document.getElementById("actors").addEventListener("click", actorsSection);
+
+prev.addEventListener("click", () => {
+  if (prevPage > 0) {
+    autorun(`movie/now_playing`, `&page=${prevPage}`);
+  }
+});
+
+next.addEventListener("click", () => {
+  if (nextPage <= totalPages) {
+    autorun(`movie/now_playing`, `&page=${nextPage}`);
+  }
+});
