@@ -4,6 +4,7 @@ const API_KEY = "542003918769df50083a13c415bbc602";
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 const PROFILE_BASE_URL = "http://image.tmdb.org/t/p/w185";
 const BACKDROP_BASE_URL = "http://image.tmdb.org/t/p/w780";
+
 const CONTAINER = document.createElement("div");
 CONTAINER.classList.add("container", "mb-32");
 const selectedGenras = [];
@@ -12,7 +13,7 @@ mainContainer.appendChild(CONTAINER);
 const date = new Date();
 const currentDate =
   date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-const release = `&primary_release_date.gte=1992-01-01&primary_release_date.lte=${currentDate}`;
+const release = `&primary_release_date.gte=1992-01-01&primary_release_date.lte=${currentDate}`; //Todo: Fix
 const youtubeBaseUrl = `https://www.youtube.com/embed/`;
 
 const prev = document.getElementById("prev");
@@ -51,6 +52,8 @@ const autorun = async (path, query = "") => {
     prev.classList.remove("disabled");
     next.classList.remove("disabled");
   }
+
+  window.scrollTo(0, 0);
 
   genresDetails();
   renderMovies(movies.results);
@@ -138,7 +141,9 @@ const renderMovies = (movies) => {
     
     <div class="px-4 py-6 flex flex-col gap-4">
     <div class="relative flex items-center justify-between font-bold">
-    <h3 class="text-xl">${movie.title}</h3>
+    <h3 class="text-xl text-${voteColor(
+      parseFloat(movie.vote_average).toFixed(1)
+    )}-500">${movie.title}</h3>
       <span id="vote" class="absolute -top-12 right-4 bg-gray-900 p-2 rounded-full text-${voteColor(
         parseFloat(movie.vote_average).toFixed(1)
       )}-500 shadow-xl shadow-${voteColor(
