@@ -107,7 +107,7 @@ footer {
 .current {
   padding: 10px 20px;
   border-radius: 50%;
-  border: 5px solid orange;
+  border: 5px solid #db0000;
   font-size: 20px;
   font-weight: 600;
 }

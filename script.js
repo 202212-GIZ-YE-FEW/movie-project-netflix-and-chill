@@ -166,7 +166,6 @@ const renderMovies = (movies) => {
 const renderMovie = (movie, credits, similarMovies) => {
   //To get the Director's Name
   const name = [];
-
   const names = credits.crew.map((eachCrewObject) => {
     if (eachCrewObject.known_for_department === "Directing") {
       name.push(eachCrewObject.name);
@@ -578,12 +577,28 @@ document.getElementById("actors").addEventListener("click", actorsSection);
 
 prev.addEventListener("click", () => {
   if (prevPage > 0) {
-    autorun(`movie/now_playing`, `&page=${prevPage}`);
+    if (selectedGenras.length >= 0) {
+      console.log(selectedGenras);
+      autorun(
+        `discover/movie`,
+        `&with_genres=${selectedGenras.join(",")}&page=${prevPage}`
+      );
+    } else {
+      autorun(`${lastUrl}`, `&page=${prevPage}`);
+    }
   }
 });
 
 next.addEventListener("click", () => {
   if (nextPage <= totalPages) {
-    autorun(`movie/now_playing`, `&page=${nextPage}`);
+    if (selectedGenras.length >= 0) {
+      console.log(selectedGenras);
+      autorun(
+        `discover/movie`,
+        `&with_genres=${selectedGenras.join(",")}&page=${nextPage}`
+      );
+    } else {
+      autorun(`${lastUrl}`, `&page=${nextPage}`);
+    }
   }
 });
