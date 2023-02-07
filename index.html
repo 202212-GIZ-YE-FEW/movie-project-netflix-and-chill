@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+
     <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Movie</title>
@@ -34,12 +36,17 @@
                         <li id="home">
                             <a href="#"
                                 class="md:bg-transparent text-white block pl-3 pr-4 py-2 md:text-blue-700 md:p-0 rounded focus:outline-none"
-                                aria-current="page">Home</a>
+                                aria-current="page"><i class="fas fa-home mx-3"></i>Home</a>
+                        </li>
+                        <li id="home">
+                            <a href="#"
+                                class="md:bg-transparent text-white block pl-3 pr-4 py-2 md:text-blue-700 md:p-0 rounded focus:outline-none"
+                                aria-current="page" id="about-navbar"><i class="fas fa-question mx-3"></i>about</a>
                         </li>
                         <li>
                             <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
                                 class="text-white hover:hover:text-gray-700 md:hover:bg-transparent md:border-0 pl-3 pr-4 py-2 md:hover:text-white md:p-0 font-medium flex items-center justify-between w-full md:w-auto">
-                                Genres
+                                <i class="fas fa-tv mx-3"></i>Genres
                                 <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -56,7 +63,7 @@
                         <li>
                             <button id="dropdownNavbarLinkMovies" data-dropdown-toggle="dropdownNavbarMovies"
                                 class="text-white hover:hover:text-gray-700 md:hover:bg-transparent md:border-0 pl-3 pr-4 py-2 md:hover:text-white md:p-0 font-medium flex items-center justify-between w-full md:w-auto">
-                                Movies
+                                <i class="fas fa-camera mx-3"></i> Movies
                                 <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
@@ -90,7 +97,7 @@
                         </li>
                         <li>
                             <a href="#" id="actors"
-                                class="text-white block pl-3 pr-4 py-2 hover:text-gray-700 md:p-0 no-underline">Actors</a>
+                                class="text-white block pl-3 pr-4 py-2 hover:text-gray-700 md:p-0 no-underline"><i class="fas fa-user mx-3"></i>Actors</a>
                         </li>
                         <li>
                             <form class="flex items-center" id="searchForm">
@@ -134,7 +141,11 @@
         <div class="page" id="next">Next Page</div>
     </div>
 
-    <footer class="text-white h-fit mt-5">
+
+
+
+    
+    <!-- <footer class="text-white h-fit mt-5">
         <div class="containerofnames flex mx-auto justify-center my-auto p-20 flex-wrap">
             <div class="px-10 pt-3">
                 <h3 class="pb-3 text-2xl font-mono">Ahmed</h3>
@@ -177,7 +188,147 @@
                     </svg></a>
             </div>
         </div>
-    </footer>
+    </footer> -->
+    
+    <div class="container-fluied">
+        <footer class=" text-lg-start text-white">
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+            <!-- Section: Links -->
+            <section class="">
+                <!--Grid row-->
+                <div class="row">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">
+                    Company name
+                    </h6>
+                    <p>
+                    Here you can use rows and columns to organize your footer
+                    content. Lorem ipsum dolor sit amet, consectetur adipisicing
+                    elit.
+                    </p>
+                </div>
+                <!-- Grid column -->
+        
+                <hr class="w-100 clearfix d-md-none" />
+        
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Products</h6>
+                    <p>
+                    <a class="text-white">MDBootstrap</a>
+                    </p>
+                    <p>
+                    <a class="text-white">MDWordPress</a>
+                    </p>
+                    <p>
+                    <a class="text-white">BrandFlow</a>
+                    </p>
+                    <p>
+                    <a class="text-white">Bootstrap Angular</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+        
+                <hr class="w-100 clearfix d-md-none" />
+        
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">
+                    Useful links
+                    </h6>
+                    <p>
+                    <a class="text-white">Your Account</a>
+                    </p>
+                    <p>
+                    <a class="text-white">Become an Affiliate</a>
+                    </p>
+                    <p>
+                    <a class="text-white">Shipping Rates</a>
+                    </p>
+                    <p>
+                    <a class="text-white">Help</a>
+                    </p>
+                </div>
+        
+                <!-- Grid column -->
+                <hr class="w-100 clearfix d-md-none" />
+        
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+                    <h6 class="text-uppercase mb-4 font-weight-bold">Contact</h6>
+                    <p><i class="fas fa-home mr-3"></i> New York, NY 10012, US</p>
+                    <p><i class="fas fa-envelope mr-3"></i> info@gmail.com</p>
+                    <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+                    <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+                </div>
+                <!-- Grid column -->
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- Section: Links -->
+        
+            <hr class="my-3">
+        
+            <!-- Section: Copyright -->
+            <section class="p-3 pt-0">
+                <div class="row d-flex align-items-center">
+                <!-- Grid column -->
+                <div class="col-md-7 col-lg-8 text-center text-md-start">
+                    <!-- Copyright -->
+                    <div class="p-3">
+                    © 2020 Copyright:
+                    <a class="text-white" href="https://mdbootstrap.com/"
+                        >MDBootstrap.com</a
+                        >
+                    </div>
+                    <!-- Copyright -->
+                </div>
+                <!-- Grid column -->
+        
+                <!-- Grid column -->
+                <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+                    <!-- Facebook -->
+                    <a
+                        class="btn btn-outline-light btn-floating m-1"
+                        class="text-white"
+                        role="button"
+                        ><i class="fab fa-facebook-f"></i
+                    ></a>
+        
+                    <!-- Twitter -->
+                    <a
+                        class="btn btn-outline-light btn-floating m-1"
+                        class="text-white"
+                        role="button"
+                        ><i class="fab fa-twitter"></i
+                    ></a>
+        
+                    <!-- Google -->
+                    <a
+                        class="btn btn-outline-light btn-floating m-1"
+                        class="text-white"
+                        role="button"
+                        ><i class="fab fa-google"></i
+                    ></a>
+        
+                    <!-- Instagram -->
+                    <a
+                        class="btn btn-outline-light btn-floating m-1"
+                        class="text-white"
+                        role="button"
+                        ><i class="fab fa-instagram"></i
+                    ></a>
+                </div>
+                <!-- Grid column -->
+                </div>
+            </section>
+            <!-- Section: Copyright -->
+            </div>
+            <!-- Grid container -->
+        </footer>
+    </div>
     <script type="text/javascript" src="script.js"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
 </body>
