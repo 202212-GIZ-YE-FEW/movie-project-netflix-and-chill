@@ -606,6 +606,7 @@ next.addEventListener("click", () => {
   }
 });
 
+
 aboutNavbar.addEventListener("click", function () {
   CONTAINER.innerHTML = " ";
   renderAbout();
