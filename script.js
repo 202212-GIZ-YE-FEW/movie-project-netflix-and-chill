@@ -245,20 +245,39 @@ const renderMovie = (movie, credits, similarMovies) => {
               <img class="w-52 h-auto pt-2"id="production-company-logo" src=${
                 BACKDROP_BASE_URL + movie.production_companies[0].logo_path
               }> 
-              <h3 class="pt-3"><b>5 Main Actors:</b></h3>
-              <ul class=" pt-2 list-unstyled">
-                  <li><a href="/">* ${credits.cast[0].name} </a></li>
-                  <li><a href="/">* ${credits.cast[1].name} </a></li>
-                  <li><a href="/">* ${credits.cast[2].name} </a></li>
-                  <li><a href="/">* ${credits.cast[3].name} </a></li>
-                  <li><a href="/">* ${credits.cast[4].name} </a></li>
-              </ul>
-          </div>
+            
           
       </div> 
       <div class="movie-trailer pt-10 w-full text-center mx-auto" id="trailer${
         movie.id
       }">   
+    </div>
+    
+    <h3 class="py-6 px-3 text-2xl"><b>5 Main actors:</b></h3>
+              
+              
+    <div class="container">
+    <ul class=" pt-2 list-unstyled">
+    <div class="row">
+    <div class="col-sm"> <li><img id="movie-backdrop" src=${BACKDROP_BASE_URL + credits.cast[0].profile_path}>
+    <p class="pt-2 text-center"> ${credits.cast[0].name} </p>
+    </div>
+    <div class="col-sm"><li><img id="movie-backdrop" src=${BACKDROP_BASE_URL + credits.cast[1].profile_path}>
+    <p class="pt-2 text-center"> ${credits.cast[1].name} </p>
+        </div>
+        <div class="col-sm"><li><img id="movie-backdrop" src=${BACKDROP_BASE_URL + credits.cast[2].profile_path}>
+        <p class="pt-2 text-center"> ${credits.cast[2].name} </p>
+        </div>
+        <div class="col-sm"> <li><img id="movie-backdrop" src=${BACKDROP_BASE_URL + credits.cast[3].profile_path}>
+        <p class="pt-2 "> ${credits.cast[3].name} </p>
+        </div>
+        <div class="col-sm"><li><img id="movie-backdrop" src=${BACKDROP_BASE_URL + credits.cast[4].profile_path}>
+        <p class="pt-2 text-center"> ${credits.cast[4].name} </p>
+       </div>
+       </div>
+       
+   
+    </ul>
     </div>
 
       <div id="Related-Movies-Section class="text-center mx-auto px-3">
