@@ -111,3 +111,19 @@ footer {
   font-size: 20px;
   font-weight: 600;
 }
+
+
+.pt-3{
+   color: white;
+   font-style: inherit;
+   font-weight: 900;
+
+ }
+ .py-6 ,.pt-2{
+   color: white;
+   font-weight: 900;
+ }
+ #movie-backdrop{
+   height: 312px;
+   width: 208px;
+ }
