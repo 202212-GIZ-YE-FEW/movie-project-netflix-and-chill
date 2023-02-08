@@ -16,9 +16,15 @@ const currentDate =
 const release = `&primary_release_date.gte=1992-01-01&primary_release_date.lte=${currentDate}`; //Todo: Fix
 const youtubeBaseUrl = `https://www.youtube.com/embed/`;
 
-const prev = document.getElementById("prev");
-const next = document.getElementById("next");
-const current = document.getElementById("current");
+const prev = document.createElement("div");
+prev.setAttribute("id", "prev");
+prev.innerHTML = `Previous Page`;
+const next = document.createElement("div");
+next.setAttribute("id", "next");
+next.innerHTML = `Next Page`;
+const current = document.createElement("div");
+current.setAttribute("id", "current");
+current.innerHTML = `1`;
 
 let currentPage = 1;
 let nextPage = 2;
@@ -160,6 +166,16 @@ const renderMovies = (movies) => {
     newDiv.appendChild(movieDiv);
     CONTAINER.appendChild(newDiv);
   });
+
+  const paginationDev = document.createElement("div");
+  paginationDev.classList.add("pagination");
+  prev.classList.add("page");
+  next.classList.add("page");
+  current.classList.add("current");
+  paginationDev.appendChild(prev);
+  paginationDev.appendChild(current);
+  paginationDev.appendChild(next);
+  CONTAINER.appendChild(paginationDev);
 };
 
 // You'll need to play with this function in order to add features and enhance the style.
