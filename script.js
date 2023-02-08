@@ -701,10 +701,10 @@ const renderAbout = () => {
                 <!-- Team item-->
                 <div class="card our-team col-xl-3 col-sm-6 mb-5 mx-3">
                     <div class="mx-3 py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-                        <h5 class="mb-0">John Tarly</h5><span class="small text-uppercase text-muted">Web - Developer</span>
+                        <h5 class="mb-0">Azzam Fahd</h5><span class="small text-uppercase text-muted">Web - Developer</span>
                         <ul class="social mb-0 list-inline mt-3">
-                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-github"></i></a></li>
-                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-linkedin"></i></a></li>
+                            <li class="list-inline-item"><a href="https://github.com/sulmi24/" class="social-link"><i class="fab fa-github"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/a-sulmi24/" class="social-link"><i class="fab fa-linkedin"></i></a></li>
                         </ul>
                     </div>
                 </div>
