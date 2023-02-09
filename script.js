@@ -4,17 +4,18 @@ const API_KEY = "542003918769df50083a13c415bbc602";
 const TMDB_BASE_URL = "https://api.themoviedb.org/3";
 const PROFILE_BASE_URL = "http://image.tmdb.org/t/p/w185";
 const BACKDROP_BASE_URL = "http://image.tmdb.org/t/p/w780";
+const youtubeBaseUrl = `https://www.youtube.com/embed/`;
+
+const date = new Date();
+const currentDate =date.getFullYear() + "-0" + (date.getMonth() + 1) + "-0" + date.getDate();
+const release = `&primary_release_date.gte=2023-01-01&primary_release_date.lte=${currentDate}`; //Fixed
 
 const CONTAINER = document.createElement("div");
 CONTAINER.classList.add("container", "mb-32");
 const selectedGenras = [];
 const mainContainer = document.querySelector(".mainContainer");
 mainContainer.appendChild(CONTAINER);
-const date = new Date();
-const currentDate =
-  date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
-const release = `&primary_release_date.gte=1992-01-01&primary_release_date.lte=${currentDate}`; //Todo: Fix
-const youtubeBaseUrl = `https://www.youtube.com/embed/`;
+
 
 const prev = document.createElement("div");
 prev.setAttribute("id", "prev");
@@ -81,6 +82,7 @@ const movieDetails = async (movie) => {
 // This function is to fetch movies. You may need to add it or change some part in it in order to apply some of the features.
 const fetchMovies = async (path, query = "") => {
   const url = constructUrl(path) + query;
+  console.log(url)
   const res = await fetch(url);
   return res.json();
 };
@@ -517,7 +519,7 @@ document
   .addEventListener("click", () => autorun(`movie/popular`));
 document
   .getElementById("latest")
-  .addEventListener("click", () => autorun(`discover/movie`, release));
+  .addEventListener("click", () => autorun(`discover/movie`, release)
 document
   .getElementById("nowPlaying")
   .addEventListener("click", () => autorun(`movie/now_playing`));
@@ -536,9 +538,7 @@ prev.addEventListener("click", () => {
   if (prevPage > 0) {
     if (selectedGenras.length >= 0) {
       console.log(selectedGenras);
-      autorun(
-        `discover/movie`,
-        `&with_genres=${selectedGenras.join(",")}&page=${prevPage}`
+      autorun(`discover/movie`,`&with_genres=${selectedGenras.join(",")}&page=${prevPage}`
       );
     } else {
       autorun(`${lastUrl}`, `&page=${prevPage}`);
@@ -550,9 +550,7 @@ next.addEventListener("click", () => {
   if (nextPage <= totalPages) {
     if (selectedGenras.length >= 0) {
       console.log(selectedGenras);
-      autorun(
-        `discover/movie`,
-        `&with_genres=${selectedGenras.join(",")}&page=${nextPage}`
+      autorun(`discover/movie`,`&with_genres=${selectedGenras.join(",")}&page=${nextPage}`
       );
     } else {
       autorun(`${lastUrl}`, `&page=${nextPage}`);
