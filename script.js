@@ -147,8 +147,7 @@ const renderMovies = (movies) => {
     
     <div class="px-4 py-6 flex flex-col gap-4">
     <div class="relative flex items-center justify-between font-bold">
-    <h3 class="text-xl text-${voteColor(
-      parseFloat(movie.vote_average).toFixed(1)
+    <h3 class="text-xl text-${voteColor(parseFloat(movie.vote_average).toFixed(1)
     )}-500">${movie.title}</h3>
       <span id="vote" class="absolute -top-12 right-4 bg-gray-900 p-2 rounded-full text-${voteColor(
         parseFloat(movie.vote_average).toFixed(1)
@@ -207,138 +206,75 @@ const renderMovie = (movie, credits, similarMovies) => {
   trailersList(movie.id);
   CONTAINER.innerHTML = `<div class="relative">
       
-      <h1 class="text-center text-4xl pt-3 pb-8" id="movie-title"><b>${
-        movie.title
-      }</b></h1>
-      <div class="grid grid-cols-3 lg:flex bg-black text-white mx-auto w-full">
-         <div class="col-md-4">
-           <img id="movie-backdrop" src=${
-             BACKDROP_BASE_URL + movie.poster_path
-           } class="rounded-xl">
-          </div>
+    <h1 class="text-center text-4xl pt-3 pb-8" id="movie-title"><b>${movie.title}</b></h1>
+    <div class="grid grid-cols-3 lg:flex bg-black text-white mx-auto w-full">
+      <div class="col-md-3">
+        <img id="movie-backdrop" src=${BACKDROP_BASE_URL + movie.poster_path} class="rounded-xl">
+       </div>
 
-          <div class=" bg-black text-white w-full px-3 ">
+      <div class=" bg-black text-white w-full px-3 ">
+        <p id="movie-release-date"><b>Release Date:</b> ${movie.release_date}</p>
+        <p id="movie-runtime"><b>Runtime:</b> ${movie.runtime} Minutes</p>
+        <p id="movie-language"><b>Movie's Language:</b> ${movie.original_language}</p>
+        <p id="movie-rating"> <b>Movie Ratings </b>  ${parseFloat(movie.vote_average).toFixed(1)}</p>
+        <p id="recieved-votes"> <b> Recieved Votes: </b> ${movie.vote_count} votes</p>
+        <p id="director-name"> <b>Director's Name</b> ${directorsname} </p>
+        <h3 class="pt-6"><b>Overview:</b></h3>
+        <p id="movie-overview">${movie.overview}</p>
             
-            <p id="movie-release-date"><b>Release Date:</b> ${
-              movie.release_date
-            }</p>
-            <p id="movie-runtime"><b>Runtime:</b> ${movie.runtime} Minutes</p>
-            <p id="movie-language"><b>Movie's Language:</b> ${
-              movie.original_language
-            }</p>
-            <p id="movie-rating"> <b>Movie Ratings </b>  ${parseFloat(
-              movie.vote_average
-            ).toFixed(1)} </p>
-            <p id="recieved-votes"> <b> Recieved Votes: </b> ${
-              movie.vote_count
-            } votes</p>
-            <p id="director-name"> <b>Director's Name</b> ${directorsname} </p>
-            <h3 class="pt-6"><b>Overview:</b></h3>
-            <p id="movie-overview">${movie.overview}</p>
-            
-          </div>
+      </div>
           
-          <div class=" w-full px-3">
-              <p id="production-company"><b>Production Company:</b> ${
-                movie.production_companies[0].name
-              }</p>
-              <img class="w-52 h-auto pt-2"id="production-company-logo" src=${
-                BACKDROP_BASE_URL + movie.production_companies[0].logo_path
-              }> 
-            
-          
+      <div class=" w-full px-3">
+        <p id="production-company"><b>Production Company:</b> ${movie.production_companies[0].name}</p>
+        <img class="w-52 h-auto pt-2"id="production-company-logo" src=${BACKDROP_BASE_URL + movie.production_companies[0].logo_path}
+        alt="${movie.production_companies[0].name} logo"> 
       </div> 
-      <div class="movie-trailer pt-10 w-full text-center mx-auto" id="trailer${
-        movie.id
-      }">   
-    </div>
-    
-    <h3 class="py-6 px-3 text-2xl"><b>5 Main actors:</b></h3>
-              
-              
-    <div class="container">
-    <ul class=" pt-2 list-unstyled">
-    <div class="row">
-    <div class="col-sm"> <li><img id="movie-backdrop" src=${BACKDROP_BASE_URL + credits.cast[0].profile_path}>
-    <p class="pt-2 text-center"> ${credits.cast[0].name} </p>
-    </div>
-    <div class="col-sm"><li><img id="movie-backdrop" src=${BACKDROP_BASE_URL + credits.cast[1].profile_path}>
-    <p class="pt-2 text-center"> ${credits.cast[1].name} </p>
-        </div>
-        <div class="col-sm"><li><img id="movie-backdrop" src=${BACKDROP_BASE_URL + credits.cast[2].profile_path}>
-        <p class="pt-2 text-center"> ${credits.cast[2].name} </p>
-        </div>
-        <div class="col-sm"> <li><img id="movie-backdrop" src=${BACKDROP_BASE_URL + credits.cast[3].profile_path}>
-        <p class="pt-2 "> ${credits.cast[3].name} </p>
-        </div>
-        <div class="col-sm"><li><img id="movie-backdrop" src=${BACKDROP_BASE_URL + credits.cast[4].profile_path}>
-        <p class="pt-2 text-center"> ${credits.cast[4].name} </p>
-       </div>
-       </div>
-       
-   
-    </ul>
+
     </div>
 
-      <div id="Related-Movies-Section class="text-center mx-auto px-3">
+    <div class="grid place-items-center movie-trailer pt-10 w-full text-center mx-auto" id="trailer${movie.id}"></div>
+
+    <div id="Related-Movies-Section class="text-center mx-auto px-3"> <--! Mohammed's work, just changed the class -->
+      <h3 class="py-6 px-3 text-2xl"><b>Main Actors:</b></h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6 px-3 mx-auto">
+        <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[0].profile_path}>
+          <p class="pt-2 text-center"><b>${credits.cast[0].name}</b></p></div>
+        <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[1].profile_path}>
+          <p class="pt-2 text-center"><b>${credits.cast[1].name}</b></p></div>
+         <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[2].profile_path}>
+          <p class="pt-2 text-center"><b>${credits.cast[2].name}</b></p></div>
+        <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[3].profile_path}>
+          <p class="pt-2 text-center"><b>${credits.cast[3].name}</b></p></div>
+        <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[4].profile_path}>
+          <p class="pt-2 text-center"><b>${credits.cast[4].name}</b></p></div>
+        <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[5].profile_path}>
+          <p class="pt-2 text-center"><b>${credits.cast[5].name}</b></p></div>
+      </div>
+    </div>
+
+    <div id="Related-Movies-Section class="text-center mx-auto px-3">
       <h3 class="py-6 px-3 text-2xl"><b>Related Movies:</b></h3>
-          <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 px-3 mx-auto">
-             <div class="w-52">
-                  <img src=${
-                    BACKDROP_BASE_URL + similarMovResults[0].poster_path
-                  }>
-                  <p class="pt-2 text-center"><b>${
-                    similarMovResults[0].title
-                  }</b></p>
-             </div>
-             <div class="w-52">
-                  <img src=${
-                    BACKDROP_BASE_URL + similarMovResults[1].poster_path
-                  }>
-                  <p class="pt-2 text-center"><b>${
-                    similarMovResults[1].title
-                  }</b></p>
-             </div>
-             <div class="w-52">
-                  <img src=${
-                    BACKDROP_BASE_URL + similarMovResults[2].poster_path
-                  }>
-                  <p class="pt-2 text-center"><b>${
-                    similarMovResults[2].title
-                  }</b></p>
-             </div>
-             <div class="w-52">
-                  <img src=${
-                    BACKDROP_BASE_URL + similarMovResults[3].poster_path
-                  }>
-                  <p class="pt-2 text-center"><b>${
-                    similarMovResults[3].title
-                  }</b></p>
-             </div>
-             <div class="w-52">
-                  <img src=${
-                    BACKDROP_BASE_URL + similarMovResults[4].poster_path
-                  }>
-                  <p class="pt-2 text-center"><b>${
-                    similarMovResults[4].title
-                  }</b></p>
-             </div>
-             <div class="w-52">
-                  <img src=${
-                    BACKDROP_BASE_URL + similarMovResults[5].poster_path
-                  }>
-                  <p class="pt-2 text-center"><b>${
-                    similarMovResults[5].title
-                  }</b></p>
-             </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6 px-3 mx-auto">
+        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[0].poster_path}>
+          <p class="pt-2 text-center"><b>${similarMovResults[0].title}</b></p></div>
+        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[1].poster_path}>
+          <p class="pt-2 text-center"><b>${similarMovResults[1].title}</b></p></div>
+        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[2].poster_path}>
+          <p class="pt-2 text-center"><b>${similarMovResults[2].title}</b></p></div>
+        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[3].poster_path}>
+          <p class="pt-2 text-center"><b>${similarMovResults[3].title}</b></p></div>
+        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[4].poster_path}>
+          <p class="pt-2 text-center"><b>${similarMovResults[4].title}</b></p></div>
+        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[5].poster_path}>
+          <p class="pt-2 text-center"><b>${similarMovResults[5].title}</b></p></div>
          </div>
       </div>
-      </div>
+    </div>
 
   `;
 };
 
-//! fetch movie trailer
+//? fetch movie trailer
 const fetchTrailer = async (id) => {
   const url = constructUrl(`movie/${id}/videos`);
   const res = await fetch(url);
@@ -347,18 +283,18 @@ const fetchTrailer = async (id) => {
 const trailersList = async (id) => {
   const videos = await fetchTrailer(id);
   renderTrailer(videos.results[0], id);
+  return;
 };
 const renderTrailer = (trailer, id) => {
   const trailerContainer = document.getElementById(`trailer${id}`);
   const iframe = document.createElement("iframe");
-  iframe.setAttribute("width", "560px");
-  iframe.setAttribute("height", "315px");
+  iframe.setAttribute("width", "840px");
+  iframe.setAttribute("height", "472.5px");
   iframe.setAttribute("src", `${youtubeBaseUrl + trailer.key}`);
-
   iframe.setAttribute("frameborder", "0");
   trailerContainer.appendChild(iframe);
 };
-//! ends here
+// fetching movie ends her
 // FETCH GENRES AND IMPLEMENT THE FILTERING BASED ON GENDER
 const fetchGenresName = async () => {
   const url = constructUrl(`genre/movie/list`);
@@ -387,48 +323,34 @@ const fun = (path, id, movieId) => {
   });
   arr.forEach((ele) => {
     const li = document.createElement("li");
-    li.classList.add(
-      "px-2",
-      "py-1",
-      "bg-gray-900",
-      "text-gray-50",
-      "rounded-full",
-      "bg-opacity-50"
-    );
+    li.classList.add("px-2","py-1","bg-gray-900","text-gray-50","rounded-full","bg-opacity-50");
     li.innerHTML = `${ele}`;
     movie.appendChild(li);
   });
 };
+
 const renderGenres = (genre) => {
   const listContainer = document.getElementById("genreList");
 
   genre.forEach((ele) => {
     const listElement = document.createElement("li");
     const licontent = document.createElement("p");
-    listElement.classList.add(
-      "text-sm",
-      "hover:bg-black",
-      "text-white",
-      "block",
-      "px-4",
-      "py-2"
-    );
+    listElement.classList.add("text-sm","hover:bg-black","text-white","block","px-4","py-2");
     licontent.innerText = `${ele.name}`;
     listElement.addEventListener("click", () => {
       if (selectedGenras.length === 0) {
-        selectedGenras.push(ele.id);
-      } else {
+        selectedGenras.push(ele.id);} 
+      else {
         if (selectedGenras.includes(ele.id)) {
           selectedGenras.forEach((id, indx) => {
             if (id === ele.id) {
               selectedGenras.splice(indx, 1);
-            }
-          });
-        } else {
+            }});
+          } 
+        else {
           selectedGenras.push(ele.id);
         }
       }
-      // getFilterdMoviesByGenres();
       autorun(`discover/movie`, `&with_genres=${selectedGenras.join(",")}`);
     });
     listElement.appendChild(licontent);
