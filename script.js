@@ -519,7 +519,7 @@ document
   .addEventListener("click", () => autorun(`movie/popular`));
 document
   .getElementById("latest")
-  .addEventListener("click", () => autorun(`discover/movie`, release)
+  .addEventListener("click", () => autorun(`discover/movie`, release));
 document
   .getElementById("nowPlaying")
   .addEventListener("click", () => autorun(`movie/now_playing`));
