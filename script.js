@@ -6,7 +6,6 @@ const PROFILE_BASE_URL = "http://image.tmdb.org/t/p/w185";
 const BACKDROP_BASE_URL = "http://image.tmdb.org/t/p/w780";
 const youtubeBaseUrl = `https://www.youtube.com/embed/`;
 
-
 const aboutNavbar = document.getElementById("about-navbar");
 
 const date = new Date();
@@ -16,7 +15,7 @@ const release = `&primary_release_date.gte=2023-01-01&primary_release_date.lte=$
 
 const CONTAINER = document.createElement("div");
 CONTAINER.classList.add("container", "mb-32");
-const selectedGenras = [];
+let selectedGenras = []; //changed to let to reset selected genres
 const mainContainer = document.querySelector(".mainContainer");
 mainContainer.appendChild(CONTAINER);
 
@@ -44,6 +43,7 @@ const deletingContainerContent = () => {
 // Don't touch this function please
 const autorun = async (path, query = "") => {
   lastUrl = path;
+  console.log(lastUrl);
   const movies = await fetchMovies(path, query);
   currentPage = movies.page;
   nextPage = currentPage + 1;
@@ -85,6 +85,7 @@ const movieDetails = async (movie) => {
 // This function is to fetch movies. You may need to add it or change some part in it in order to apply some of the features.
 const fetchMovies = async (path, query = "") => {
   const url = constructUrl(path) + query;
+  console.log(url);
   const res = await fetch(url);
   return res.json();
 };
@@ -172,7 +173,7 @@ const renderMovies = (movies) => {
   });
 
   const paginationDev = document.createElement("div");
-  paginationDev.classList.add("pagination");
+  paginationDev.classList.add("pagination", "my-20");
   prev.classList.add("page");
   next.classList.add("page");
   current.classList.add("current");
@@ -672,12 +673,20 @@ document.getElementById("actors").addEventListener("click", actorsSection);
 
 prev.addEventListener("click", () => {
   if (prevPage > 0) {
-    if (selectedGenras.length >= 0) {
-      autorun(
-        `discover/movie`,
-        `&with_genres=${selectedGenras.join(",")}&page=${prevPage}`
-      );
+    if (lastUrl.includes("rimary_release_date")) {
+      autorun(`${lastUrl}`, `${release}&page=${prevPage}`);
+    }
+    if (lastUrl.startsWith("discover")) {
+      if (selectedGenras.length !== 0) {
+        autorun(
+          `discover/movie`,
+          `&with_genres=${selectedGenras.join(",")}&page=${prevPage}`
+        );
+      } else {
+        autorun(`${lastUrl}`, `&page=${prevPage}`);
+      }
     } else {
+      selectedGenras = [];
       autorun(`${lastUrl}`, `&page=${prevPage}`);
     }
   }
@@ -685,18 +694,24 @@ prev.addEventListener("click", () => {
 
 next.addEventListener("click", () => {
   if (nextPage <= totalPages) {
-    if (selectedGenras.length >= 0) {
-      autorun(
-        `discover/movie`,
-        `&with_genres=${selectedGenras.join(",")}&page=${nextPage}`
-      );
+    if (lastUrl.includes("rimary_release_date")) {
+      autorun(`${lastUrl}`, `${release}&page=${nextPage}`);
+    }
+    if (lastUrl.startsWith("discover")) {
+      if (selectedGenras.length !== 0) {
+        autorun(
+          `discover/movie`,
+          `&with_genres=${selectedGenras.join(",")}&page=${nextPage}`
+        );
+      } else {
+        autorun(`${lastUrl}`, `&page=${nextPage}`);
+      }
     } else {
+      selectedGenras = [];
       autorun(`${lastUrl}`, `&page=${nextPage}`);
     }
   }
 });
-
-
 
 //About section
 
@@ -804,6 +819,5 @@ const renderAbout = () => {
             </div>    
         </div>
     </section>
-  `
-  ;
+  `;
 };

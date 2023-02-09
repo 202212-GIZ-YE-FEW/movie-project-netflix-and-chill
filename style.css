@@ -1,29 +1,27 @@
 /* #db0000  Netflix red 
    #000000 black*/
 
-   * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-  }
-  
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 
-   :root {
-   --secondary-color: red;
-   --accent-color: rgb(101, 102, 102);
-   --bg-color: #282c34;
-   }
+:root {
+  --secondary-color: red;
+  --accent-color: rgb(101, 102, 102);
+  --bg-color: #282c34;
+}
 
-   body{
-    color: white;
-    background-color: #000000;
-    font-family: 'sans-serif';
-    line-height: 40px;
-
-   }
+body {
+  color: white;
+  background-color: #000000;
+  font-family: "sans-serif";
+  line-height: 40px;
+}
 #movieCard {
   background-color: #000000;
-  font-family: 'sans-serif';
+  font-family: "sans-serif";
   line-height: 40px;
   color: #000000;
 }
@@ -34,11 +32,11 @@ footer {
   background-color: var(--bg-color);
 }
 
-i{
+i {
   color: red;
 }
 
-a:hover{
+a:hover {
   text-decoration: none;
 }
 .headerSection-container {
@@ -142,16 +140,15 @@ a:hover{
   font-weight: 600;
 }
 
-
-.about{
+.about {
   color: white;
   font-size: 1.5rem;
   padding: 0 10px 0 10px;
 }
-.our-team{
+.our-team {
   background-color: var(--bg-color);
   font-size: 1rem;
-align-items: center;
+  align-items: center;
 }
 .social-link {
   width: 30px;
@@ -168,7 +165,7 @@ align-items: center;
 
 .social-link:hover,
 .social-link:focus {
-  background: var( --accent-color);
+  background: var(--accent-color);
   text-decoration: none;
   /* color: #555; */
 }
