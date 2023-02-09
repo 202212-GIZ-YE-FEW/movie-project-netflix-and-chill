@@ -6,6 +6,9 @@ const PROFILE_BASE_URL = "http://image.tmdb.org/t/p/w185";
 const BACKDROP_BASE_URL = "http://image.tmdb.org/t/p/w780";
 const youtubeBaseUrl = `https://www.youtube.com/embed/`;
 
+
+const aboutNavbar = document.getElementById("about-navbar");
+
 const date = new Date();
 const currentDate =
   date.getFullYear() + "-0" + (date.getMonth() + 1) + "-0" + date.getDate();
@@ -692,3 +695,115 @@ next.addEventListener("click", () => {
     }
   }
 });
+
+
+
+//About section
+
+aboutNavbar.addEventListener("click", function () {
+  CONTAINER.innerHTML = " ";
+  renderAbout();
+});
+
+const renderAbout = () => {
+  CONTAINER.innerHTML = `
+  <section class="about"> 
+        <div class=" py-5">
+            <div class="container py-5">
+                <div class="row align-items-center mb-5">
+                    <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3"></i>
+                        <h2 class="font-weight-light">Our community</h2>
+                        <p class="font-italic text-muted mb-4">
+                            Our community is second to none. Between our staff and community moderators, we're always here to help. We're passionate about making sure your experience on TMDB is nothing short of amazing.</p>
+                    </div>
+                    <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2">
+                        <img src="images/about1.svg" alt="" class="img-fluid mb-4 mb-lg-0">
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3"></i>
+                        <h2 class="font-weight-light">Let's talk about Neflix & chill</h2>
+                        <p class="font-italic text-muted mb-4">
+                            Trusted platform. Every single day our service is used by millions of people while we process over 3 billion requests. We've proven for years that this is a service that can be trusted and relied on.</p>
+                    </div>
+                    <div class="col-lg-5 px-5 mx-auto">
+                        <img src="images/about.svg" alt="" class="img-fluid mb-4 mb-lg-0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="pt-5">
+            <div class="row d-flex justify-content-center text-center mt-5">
+                <h2 class=" display-4 font-weight-light">Our team</h2>
+            </div>
+        
+            <div class="row text-center d-flex justify-content-center">
+                <!-- Team item-->
+                <div class="card d-flex justify-content-center our-team col-xl-3 col-sm-6 mb-5 mx-3">
+                    <div class=" py-5 px-4 ">
+                        <img src="https://bootstrapious.com/i/snippets/sn-about/avatar-4.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Haneen Abdulglil</h5>
+                        <span class="small text-uppercase text-muted">Web - Developer</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="https://github.com/Haneen-Abdulgllil" class="social-link"><i class="fab fa-github"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/haneen-abdulglil-762601241" class="social-link"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+        
+                <!-- Team item-->
+                <div class="card our-team col-xl-3 col-sm-6 mb-5 mx-3">
+                    <div class=" py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-3.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Ahmed Alrai</h5><span class="small text-uppercase text-muted">Web - Developer</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="https://github.com/AhmadHRai" class="social-link"><i class="fab fa-github"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/ahmadalrai/" class="social-link"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+        
+                <!-- Team item-->
+                <div class=" card our-team col-xl-3 col-sm-6 mb-5 mx-3">
+                    <div class=" py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-2.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Abdulrahman Abdullah</h5><span class="small text-uppercase text-muted">Web - Developer</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="https://github.com/AASB7" class="social-link"><i class="fab fa-github"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+        
+                <!-- Team item-->
+                <div class=" card our-team col-xl-3 col-sm-6 mb-5 mx-3">
+                    <div class="py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Mohanned Basurra</h5><span class="small text-uppercase text-muted">Web - Developer</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="https://github.com/MohdBasurra" class="social-link"><i class="fab fa-github"></i></a></li>
+                            <li class="list-inline-item"><a href="#" class="social-link"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+
+                <!-- Team item-->
+                <div class="card our-team col-xl-3 col-sm-6 mb-5 mx-3">
+                    <div class="mx-3 py-5 px-4"><img src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+                        <h5 class="mb-0">Azzam Fahd</h5><span class="small text-uppercase text-muted">Web - Developer</span>
+                        <ul class="social mb-0 list-inline mt-3">
+                            <li class="list-inline-item"><a href="https://github.com/sulmi24/" class="social-link"><i class="fab fa-github"></i></a></li>
+                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/a-sulmi24/" class="social-link"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End-->
+        
+            </div>    
+        </div>
+    </section>
+  `
+  ;
+};
