@@ -1,16 +1,46 @@
 /* #db0000  Netflix red 
    #000000 black*/
 
-body,
+   * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+
+   :root {
+   --secondary-color: red;
+   --accent-color: rgb(101, 102, 102);
+   --bg-color: #282c34;
+   }
+
+   body{
+    color: white;
+    background-color: #000000;
+    font-family: 'sans-serif';
+    line-height: 40px;
+
+   }
 #movieCard {
   background-color: #000000;
+  font-family: 'sans-serif';
+  line-height: 40px;
+  color: #000000;
 }
 
 nav,
 footer {
-  background-color: #db0000;
+  /* background-color: #db0000; */
+  background-color: var(--bg-color);
 }
 
+i{
+  color: red;
+}
+
+a:hover{
+  text-decoration: none;
+}
 .headerSection-container {
   height: 100vh;
   max-width: 100%;
@@ -113,13 +143,32 @@ footer {
 }
 
 
-.pt-3{
-   color: white;
-   font-style: inherit;
-   font-weight: 900;
+.about{
+  color: white;
+  font-size: 1.5rem;
+  padding: 0 10px 0 10px;
+}
+.our-team{
+  background-color: var(--bg-color);
+  font-size: 1rem;
+align-items: center;
+}
+.social-link {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* color: #666; */
+  border-radius: 50%;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
 
- }
- .py-6 ,.pt-2{
-   color: white;
-   font-weight: 900;
- }
+.social-link:hover,
+.social-link:focus {
+  background: var( --accent-color);
+  text-decoration: none;
+  /* color: #555; */
+}
