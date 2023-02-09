@@ -7,7 +7,8 @@ const BACKDROP_BASE_URL = "http://image.tmdb.org/t/p/w780";
 const youtubeBaseUrl = `https://www.youtube.com/embed/`;
 
 const date = new Date();
-const currentDate =date.getFullYear() + "-0" + (date.getMonth() + 1) + "-0" + date.getDate();
+const currentDate =
+  date.getFullYear() + "-0" + (date.getMonth() + 1) + "-0" + date.getDate();
 const release = `&primary_release_date.gte=2023-01-01&primary_release_date.lte=${currentDate}`; //Fixed
 
 const CONTAINER = document.createElement("div");
@@ -15,7 +16,6 @@ CONTAINER.classList.add("container", "mb-32");
 const selectedGenras = [];
 const mainContainer = document.querySelector(".mainContainer");
 mainContainer.appendChild(CONTAINER);
-
 
 const prev = document.createElement("div");
 prev.setAttribute("id", "prev");
@@ -82,7 +82,6 @@ const movieDetails = async (movie) => {
 // This function is to fetch movies. You may need to add it or change some part in it in order to apply some of the features.
 const fetchMovies = async (path, query = "") => {
   const url = constructUrl(path) + query;
-  console.log(url)
   const res = await fetch(url);
   return res.json();
 };
@@ -149,7 +148,8 @@ const renderMovies = (movies) => {
     
     <div class="px-4 py-6 flex flex-col gap-4">
     <div class="relative flex items-center justify-between font-bold">
-    <h3 class="text-xl text-${voteColor(parseFloat(movie.vote_average).toFixed(1)
+    <h3 class="text-xl text-${voteColor(
+      parseFloat(movie.vote_average).toFixed(1)
     )}-500">${movie.title}</h3>
       <span id="vote" class="absolute -top-12 right-4 bg-gray-900 p-2 rounded-full text-${voteColor(
         parseFloat(movie.vote_average).toFixed(1)
@@ -208,18 +208,30 @@ const renderMovie = (movie, credits, similarMovies) => {
   trailersList(movie.id);
   CONTAINER.innerHTML = `<div class="relative">
       
-    <h1 class="text-center text-4xl pt-3 pb-8" id="movie-title"><b>${movie.title}</b></h1>
+    <h1 class="text-center text-4xl pt-3 pb-8" id="movie-title"><b>${
+      movie.title
+    }</b></h1>
     <div class="grid grid-cols-3 lg:flex bg-black text-white mx-auto w-full">
       <div class="col-md-3">
-        <img id="movie-backdrop" src=${BACKDROP_BASE_URL + movie.poster_path} class="rounded-xl">
+        <img id="movie-backdrop" src=${
+          BACKDROP_BASE_URL + movie.poster_path
+        } class="rounded-xl">
        </div>
 
       <div class=" bg-black text-white w-full px-3 ">
-        <p id="movie-release-date"><b>Release Date:</b> ${movie.release_date}</p>
+        <p id="movie-release-date"><b>Release Date:</b> ${
+          movie.release_date
+        }</p>
         <p id="movie-runtime"><b>Runtime:</b> ${movie.runtime} Minutes</p>
-        <p id="movie-language"><b>Movie's Language:</b> ${movie.original_language}</p>
-        <p id="movie-rating"> <b>Movie Ratings </b>  ${parseFloat(movie.vote_average).toFixed(1)}</p>
-        <p id="recieved-votes"> <b> Recieved Votes: </b> ${movie.vote_count} votes</p>
+        <p id="movie-language"><b>Movie's Language:</b> ${
+          movie.original_language
+        }</p>
+        <p id="movie-rating"> <b>Movie Ratings </b>  ${parseFloat(
+          movie.vote_average
+        ).toFixed(1)}</p>
+        <p id="recieved-votes"> <b> Recieved Votes: </b> ${
+          movie.vote_count
+        } votes</p>
         <p id="director-name"> <b>Director's Name</b> ${directorsname} </p>
         <h3 class="pt-6"><b>Overview:</b></h3>
         <p id="movie-overview">${movie.overview}</p>
@@ -227,29 +239,47 @@ const renderMovie = (movie, credits, similarMovies) => {
       </div>
           
       <div class=" w-full px-3">
-        <p id="production-company"><b>Production Company:</b> ${movie.production_companies[0].name}</p>
-        <img class="w-52 h-auto pt-2"id="production-company-logo" src=${BACKDROP_BASE_URL + movie.production_companies[0].logo_path}
+        <p id="production-company"><b>Production Company:</b> ${
+          movie.production_companies[0].name
+        }</p>
+        <img class="w-52 h-auto pt-2"id="production-company-logo" src=${
+          BACKDROP_BASE_URL + movie.production_companies[0].logo_path
+        }
         alt="${movie.production_companies[0].name} logo"> 
       </div> 
 
     </div>
 
-    <div class="grid place-items-center movie-trailer pt-10 w-full text-center mx-auto" id="trailer${movie.id}"></div>
+    <div class="grid place-items-center movie-trailer pt-10 w-full text-center mx-auto" id="trailer${
+      movie.id
+    }"></div>
 
-    <div id="Related-Movies-Section class="text-center mx-auto px-3"> <--! Mohammed's work, just changed the class -->
+    <div id="Related-Movies-Section class="text-center mx-auto px-3">
       <h3 class="py-6 px-3 text-2xl"><b>Main Actors:</b></h3>
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6 px-3 mx-auto">
-        <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[0].profile_path}>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + credits.cast[0].profile_path
+        }>
           <p class="pt-2 text-center"><b>${credits.cast[0].name}</b></p></div>
-        <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[1].profile_path}>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + credits.cast[1].profile_path
+        }>
           <p class="pt-2 text-center"><b>${credits.cast[1].name}</b></p></div>
-         <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[2].profile_path}>
+         <div class="w-52"><img src=${
+           BACKDROP_BASE_URL + credits.cast[2].profile_path
+         }>
           <p class="pt-2 text-center"><b>${credits.cast[2].name}</b></p></div>
-        <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[3].profile_path}>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + credits.cast[3].profile_path
+        }>
           <p class="pt-2 text-center"><b>${credits.cast[3].name}</b></p></div>
-        <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[4].profile_path}>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + credits.cast[4].profile_path
+        }>
           <p class="pt-2 text-center"><b>${credits.cast[4].name}</b></p></div>
-        <div class="w-52"><img src=${BACKDROP_BASE_URL + credits.cast[5].profile_path}>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + credits.cast[5].profile_path
+        }>
           <p class="pt-2 text-center"><b>${credits.cast[5].name}</b></p></div>
       </div>
     </div>
@@ -257,18 +287,42 @@ const renderMovie = (movie, credits, similarMovies) => {
     <div id="Related-Movies-Section class="text-center mx-auto px-3">
       <h3 class="py-6 px-3 text-2xl"><b>Related Movies:</b></h3>
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6 px-3 mx-auto">
-        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[0].poster_path}>
-          <p class="pt-2 text-center"><b>${similarMovResults[0].title}</b></p></div>
-        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[1].poster_path}>
-          <p class="pt-2 text-center"><b>${similarMovResults[1].title}</b></p></div>
-        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[2].poster_path}>
-          <p class="pt-2 text-center"><b>${similarMovResults[2].title}</b></p></div>
-        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[3].poster_path}>
-          <p class="pt-2 text-center"><b>${similarMovResults[3].title}</b></p></div>
-        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[4].poster_path}>
-          <p class="pt-2 text-center"><b>${similarMovResults[4].title}</b></p></div>
-        <div class="w-52"><img src=${BACKDROP_BASE_URL + similarMovResults[5].poster_path}>
-          <p class="pt-2 text-center"><b>${similarMovResults[5].title}</b></p></div>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + similarMovResults[0].poster_path
+        }>
+          <p class="pt-2 text-center"><b>${
+            similarMovResults[0].title
+          }</b></p></div>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + similarMovResults[1].poster_path
+        }>
+          <p class="pt-2 text-center"><b>${
+            similarMovResults[1].title
+          }</b></p></div>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + similarMovResults[2].poster_path
+        }>
+          <p class="pt-2 text-center"><b>${
+            similarMovResults[2].title
+          }</b></p></div>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + similarMovResults[3].poster_path
+        }>
+          <p class="pt-2 text-center"><b>${
+            similarMovResults[3].title
+          }</b></p></div>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + similarMovResults[4].poster_path
+        }>
+          <p class="pt-2 text-center"><b>${
+            similarMovResults[4].title
+          }</b></p></div>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + similarMovResults[5].poster_path
+        }>
+          <p class="pt-2 text-center"><b>${
+            similarMovResults[5].title
+          }</b></p></div>
          </div>
       </div>
     </div>
@@ -325,7 +379,14 @@ const fun = (path, id, movieId) => {
   });
   arr.forEach((ele) => {
     const li = document.createElement("li");
-    li.classList.add("px-2","py-1","bg-gray-900","text-gray-50","rounded-full","bg-opacity-50");
+    li.classList.add(
+      "px-2",
+      "py-1",
+      "bg-gray-900",
+      "text-gray-50",
+      "rounded-full",
+      "bg-opacity-50"
+    );
     li.innerHTML = `${ele}`;
     movie.appendChild(li);
   });
@@ -337,19 +398,26 @@ const renderGenres = (genre) => {
   genre.forEach((ele) => {
     const listElement = document.createElement("li");
     const licontent = document.createElement("p");
-    listElement.classList.add("text-sm","hover:bg-black","text-white","block","px-4","py-2");
+    listElement.classList.add(
+      "text-sm",
+      "hover:bg-black",
+      "text-white",
+      "block",
+      "px-4",
+      "py-2"
+    );
     licontent.innerText = `${ele.name}`;
     listElement.addEventListener("click", () => {
       if (selectedGenras.length === 0) {
-        selectedGenras.push(ele.id);} 
-      else {
+        selectedGenras.push(ele.id);
+      } else {
         if (selectedGenras.includes(ele.id)) {
           selectedGenras.forEach((id, indx) => {
             if (id === ele.id) {
               selectedGenras.splice(indx, 1);
-            }});
-          } 
-        else {
+            }
+          });
+        } else {
           selectedGenras.push(ele.id);
         }
       }
@@ -416,7 +484,8 @@ const renderActors = (actors) => {
         <div class="image-container relative w-full border-8 border-black">
           <img src="${PROFILE_BASE_URL + actor.profile_path}" alt="${
       actor.name
-    }" poster class=" home-actor-image opacity-100 block w-full h-auto">  
+    }" 
+          poster class=" home-actor-image opacity-100 block w-full h-auto">  
         </div>
         <h1 class= "text-center text-2xl md:text-3xl font-bold font-mono bg-black text-white h-20 md:h-28 lg:h-36 xl:h-28 m-auto p-3">${
           actor.name
@@ -453,40 +522,104 @@ function deathDate(actor) {
 
 //render Single Actor Function
 const renderActor = (actor, movieCredits) => {
-  CONTAINER.innerHTML = `
-  <h1 class="text-center text-4xl pt-3 pb-8" id="actor-name"><b>${
-    actor.name
-  }</b> </h1>
-<div class="grid justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:px-20 bg-black text-white mx-auto">
-    <div class= "mx-auto">
-        <img id="actor-backdrop"  src=${
-          PROFILE_BASE_URL + actor.profile_path
-        } alt="${actor.name}">
-    </diV>
+  console.log(movieCredits);
+  try {
+    CONTAINER.innerHTML = `
+    <h1 class="text-center text-4xl pt-3 pb-8" id="actor-name"><b>${
+      actor.name
+    }</b> </h1>
+    <div class="grid justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:px-20 bg-black text-white mx-auto">
+      <div class= "mx-auto">
+          <img id="actor-backdrop"  src=${
+            PROFILE_BASE_URL + actor.profile_path
+          } alt="${actor.name}">
+      </diV>
+  
+     <div class="  w-full mx-auto px-2 pt-4 md:pt-0">
+         <p id="actor-gender"><b>Gender:</b> ${getGender(actor)}</p>
+         <p id="actor-popularity"><b>Popularity:</b> ${actor.popularity} </p>
+         <p id="actor-birthday"><b>Birthday:</b> ${actor.birthday} </p>
+         <p id="actor-deathday">${deathDate(actor)}</p>
+         <h3 class="pt-6"><b>Biography:</b></h3>
+         <p id="actor-biography">${actor.biography}</p>
+     </div>
+    </div>
 
-   <div class="  w-full mx-auto px-2 pt-4 md:pt-0">
-       <p id="actor-gender"><b>Gender:</b> ${getGender(actor)}</p>
-       <p id="actor-popularity"><b>Popularity:</b> ${actor.popularity} </p>
-       <p id="actor-birthday"><b>Birthday:</b> ${actor.birthday} </p>
-       <p id="actor-deathday">${deathDate(actor)}</p>
-       <h3 class="pt-6"><b>Biography:</b></h3>
-       <p id="actor-biography">${actor.biography}</p>
-   </div>
-   
-   <div class="mx-auto pr-2 pt-4 md:pt-0 w-full lg:pl-5">
-   <h3><b>List of Movies the Actor Participated in:</b></h3>
-   <ul class="pt-2">
-        <li> ${movieCredits.cast[0].title}</li>
-        <li> ${movieCredits.cast[1].title}</li>  
-        <li> ${movieCredits.cast[2].title}</li>
-        <li> ${movieCredits.cast[3].title}</li>
-        <li> ${movieCredits.cast[4].title}</li>
-        <li> ${movieCredits.cast[5].title} </li>
-        <li> ${movieCredits.cast[6].title} </li>
-    </ul> 
-   </div> 
-</div>`;
+    <div class="text-white mx-auto pr-2 pt-4 md:pt-0 w-full lg:pl-5">
+    <h1><b>List of Movies the Actor Participated in:</b></h1>
+     <br>
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 px-3 mx-auto">
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + movieCredits.cast[0].poster_path
+        } alt="${movieCredits.cast[0].title} has no logo">
+        <p class="pt-2 text-center"><b>${
+          movieCredits.cast[0].title
+        }</b></p></div>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + movieCredits.cast[1].poster_path
+        } alt="${movieCredits.cast[1].title} has no logo">
+        <p class="pt-2 text-center"><b>${
+          movieCredits.cast[1].title
+        }</b></p></div>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + movieCredits.cast[2].poster_path
+        } alt="${movieCredits.cast[2].title} has no logo">
+        <p class="pt-2 text-center"><b>${
+          movieCredits.cast[2].title
+        }</b></p></div>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + movieCredits.cast[3].poster_path
+        } alt="${movieCredits.cast[3].title} has no logo">
+        <p class="pt-2 text-center"><b>${
+          movieCredits.cast[3].title
+        }</b></p></div>
+        <div class="w-52"><img src=${
+          BACKDROP_BASE_URL + movieCredits.cast[4].poster_path
+        } alt="${movieCredits.cast[4].title} has no logo">
+        <p class="pt-2 text-center"><b>${
+          movieCredits.cast[4].title
+        }</b></p></div>
+      </div> 
+      
+  </div>`;
+  } catch (e) {
+    //If the actor doesn't have that many movies
+    console.log(e);
+    CONTAINER.innerHTML = `
+    <h1 class="text-center text-4xl pt-3 pb-8" id="actor-name"><b>${
+      actor.name
+    }</b> </h1>
+    <div class="grid justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:px-20 bg-black text-white mx-auto">
+      <div class= "mx-auto">
+          <img id="actor-backdrop"  src=${
+            PROFILE_BASE_URL + actor.profile_path
+          } alt="${actor.name}">
+      </diV>
+  
+     <div class="  w-full mx-auto px-2 pt-4 md:pt-0">
+         <p id="actor-gender"><b>Gender:</b> ${getGender(actor)}</p>
+         <p id="actor-popularity"><b>Popularity:</b> ${actor.popularity} </p>
+         <p id="actor-birthday"><b>Birthday:</b> ${actor.birthday} </p>
+         <p id="actor-deathday">${deathDate(actor)}</p>
+         <h3 class="pt-6"><b>Biography:</b></h3>
+         <p id="actor-biography">${actor.biography}</p>
+     </div>
+  </div>`;
+    if (movieCredits.cast[2] !== undefined) {
+      CONTAINER.innerHTML += `
+    <div class="mx-auto pr-2 pt-4 md:pt-0 w-full lg:pl-5">
+    <h3><b>List of Movies the Actor Participated in:</b></h3>
+    <ul class="pt-2">
+         <li> ${movieCredits.cast[0].title}</li>
+         <li> ${movieCredits.cast[1].title}</li>
+         <li> ${movieCredits.cast[2].title}</li>
+     </ul> 
+    </div> 
+    `;
+    }
+  }
 };
+
 const voteColor = (vote) => {
   if (vote >= 8.5) {
     return `green`;
@@ -537,8 +670,9 @@ document.getElementById("actors").addEventListener("click", actorsSection);
 prev.addEventListener("click", () => {
   if (prevPage > 0) {
     if (selectedGenras.length >= 0) {
-      console.log(selectedGenras);
-      autorun(`discover/movie`,`&with_genres=${selectedGenras.join(",")}&page=${prevPage}`
+      autorun(
+        `discover/movie`,
+        `&with_genres=${selectedGenras.join(",")}&page=${prevPage}`
       );
     } else {
       autorun(`${lastUrl}`, `&page=${prevPage}`);
@@ -549,8 +683,9 @@ prev.addEventListener("click", () => {
 next.addEventListener("click", () => {
   if (nextPage <= totalPages) {
     if (selectedGenras.length >= 0) {
-      console.log(selectedGenras);
-      autorun(`discover/movie`,`&with_genres=${selectedGenras.join(",")}&page=${nextPage}`
+      autorun(
+        `discover/movie`,
+        `&with_genres=${selectedGenras.join(",")}&page=${nextPage}`
       );
     } else {
       autorun(`${lastUrl}`, `&page=${nextPage}`);
