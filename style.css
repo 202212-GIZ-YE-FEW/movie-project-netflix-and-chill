@@ -1,11 +1,171 @@
+/* #db0000  Netflix red 
+   #000000 black*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --secondary-color: red;
+  --accent-color: rgb(101, 102, 102);
+  --bg-color: #282c34;
+}
+
+body {
+  color: white;
+  background-color: #000000;
+  font-family: "sans-serif";
+  line-height: 40px;
+}
+#movieCard {
+  background-color: #000000;
+  font-family: "sans-serif";
+  line-height: 40px;
+  color: #000000;
+}
+
+nav,
+footer {
+  /* background-color: #db0000; */
+  background-color: var(--bg-color);
+}
+
+i {
+  color: red;
+}
+
+a:hover {
+  text-decoration: none;
+}
+.headerSection-container {
+  height: 100vh;
+  max-width: 100%;
+  overflow: hidden;
+  animation: scroll 120s linear infinite;
+  perspective: 1000px;
+  perspective-origin: 50% 50%;
+  background-image: linear-gradient(
+      0deg,
+      rgba(70, 69, 69, 0.533),
+      rgba(70, 69, 69, 0.533)
+    ),
+    url("https://images.saymedia-content.com/.image/c_limit%2Ccs_srgb%2Cq_auto:eco%2Cw_700/MTc0NDMzMjEyMTYyOTA5NTQ0/best-mindfuck-movies.webp");
+  background-repeat: repeat;
+}
+
+@keyframes scroll {
+  100% {
+    background-position: 0px -3000px;
+  }
+}
+
+.overlay {
+  background: linear-gradient(
+    0deg,
+    rgba(255, 0, 0, 0.3),
+    rgba(243, 225, 235, 0.3)
+  );
+  z-index: 2;
+  height: 100%;
+  width: 100%;
+}
+
+#header-poster {
+  width: 100%;
+  height: fit-content;
+}
+
 #movie-backdrop {
-    width: 100%;
+  width: 100%;
 }
 
 .container {
-    padding-top: 32px;
+  padding-top: 32px;
 }
 
-#actors {
-    margin: 24px 16px 0 0;
+/* #actors {
+     margin: 24px 16px 0 0;
+   } */
+#movieCard:hover #overview {
+  transform: translateY(0);
+}
+/* change the cursor so the image appears clickable in home page*/
+.container img:hover {
+  cursor: pointer;
+}
+
+/* Styling Hover on Image */
+.middle {
+  transition: 0.5s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.image-container:hover .home-movie-image {
+  opacity: 0.3 !important;
+}
+
+.image-container:hover .middle {
+  opacity: 1;
+}
+
+.pagination {
+  display: flex;
+  margin: 10px 30px;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.page {
+  padding: 20px;
+  cursor: pointer;
+}
+
+.page.disabled {
+  cursor: not-allowed;
+  color: grey;
+}
+
+.current {
+  padding: 10px 20px;
+  border-radius: 50%;
+  border: 5px solid #db0000;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.about {
+  color: white;
+  font-size: 1.5rem;
+  padding: 0 10px 0 10px;
+}
+.our-team {
+  background-color: var(--bg-color);
+  font-size: 1rem;
+  align-items: center;
+}
+.social-link {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* color: #666; */
+  border-radius: 50%;
+  transition: all 0.3s;
+  font-size: 0.9rem;
+}
+
+.social-link:hover,
+.social-link:focus {
+  background: var(--accent-color);
+  text-decoration: none;
+  /* color: #555; */
 }
